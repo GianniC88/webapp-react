@@ -28,6 +28,54 @@ export default function SingleMovies() {
 			<section>
 				<div className="container p-5">
 					<h1 className="display-5 fw-bolder">Recensioni</h1>
+					<form action="add_review ">
+						<div class="d-flex">
+							<div class="col-6 ">
+								<div class="mb-3 ">
+									<label htmlFor="name" class="form-label">Name</label>
+									<input
+										className="form-control"
+										type="text"
+										name="name"
+										id="name"
+										class="form-control"
+										placeholder="Type Your Name"
+										aria-describedby="helpId" />
+									<small id="helpId" class="text-muted">Help text</small>
+								</div>
+								<div class="mb-3">
+									<label htmlFor="name" class="form-label">Name</label>
+									<input
+										className="form-control"
+										type="text"
+										name="name"
+										id="name"
+										class="form-control"
+										placeholder="Type Your Name"
+										aria-describedby="helpId" />
+									<small id="helpId" class="text-muted">Help text</small>
+								</div>
+								<div class="mb-3">
+									<label htmlFor="summary" class="form-label">Name</label>
+									<input
+										className="form-control"
+										type="text"
+										name="summary"
+										id="summary"
+										class="form-control"
+										placeholder="Type Your review summary"
+										aria-describedby="helpId" />
+									<small id="helpId" class="text-muted">Help text</small>
+								</div>
+							</div>
+
+						</div>
+						<div class="mb-3 col-6">
+							<label for="content" class="form-label">content</label>
+							<textarea class="form-control" name="content" id="content" rows="4"></textarea>
+						</div>
+
+					</form>
 
 					<div className="containerSingleMovie">
 						<div className="d-flex justify-content-center align-items-center min-vh-100">
