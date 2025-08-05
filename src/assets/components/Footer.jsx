@@ -9,9 +9,9 @@ export default function Footer() {
 							<h3>Movies Reviews</h3>
 							<div>
 								Social:
-								<a className="p-2" href=""><i class="bi bi-facebook"></i></a>
-								<a className="p-2" href=""><i class="bi bi-instagram"></i></a>
-								<a className="p-2" href=""><i class="bi bi-whatsapp"></i></a>
+								<a className="p-2" href=""><i className="bi bi-facebook"></i></a>
+								<a className="p-2" href=""><i className="bi bi-instagram"></i></a>
+								<a className="p-2" href=""><i className="bi bi-whatsapp"></i></a>
 
 							</div>
 						</div>

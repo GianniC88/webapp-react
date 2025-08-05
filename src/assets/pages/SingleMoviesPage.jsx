@@ -34,16 +34,17 @@ export default function SingleMovies() {
 						<div className="col-3 ">
 							<form action="card p-4">
 								<div className="mb-3 ">
-									<label htmlFor="name" className="form-label">Name</label>
+									<label htmlFor="nickname" className="form-label">nickname</label>
 									<input
 										className="form-control"
 										type="text"
-										name="name"
-										id="name"
-										placeholder="Type Your Name"
+										name="nickname"
+										id="nickname"
+										placeholder="Type Your nickname for your review"
 										aria-describedby="helpId" />
-									<small id="helpId" class="text-muted">Help text</small>
+									<small id="helpId" className="text-muted">Help text</small>
 								</div>
+
 								<div className="mb-3">
 									<label htmlFor="name" className="form-label">Name</label>
 									<input
@@ -55,27 +56,16 @@ export default function SingleMovies() {
 										aria-describedby="helpId" />
 									<small id="helpId" className="text-muted">Help text</small>
 								</div>
-								<div className="mb-3">
-									<label htmlFor="summary" className="form-label">Name</label>
-									<input
-										className="form-control"
-										type="text"
-										name="summary"
-										id="summary"
-
-										placeholder="Type Your review summary"
-										aria-describedby="helpId" />
-									<small id="helpId" className="text-muted">Help text</small>
-								</div>
 
 
 								<div className="mb-3">
-									<label for="content" className="form-label">content</label>
+									<label htmlFor="content" className="form-label">content</label>
 									<textarea className="form-control" name="content" id="content" rows="4"></textarea>
 								</div>
+
 								<button
 									type="submit"
-									class="btn btn-primary"
+									className="btn btn-primary"
 								>
 									<i className="bi bi-floppy">Save</i>
 								</button>
@@ -94,13 +84,23 @@ export default function SingleMovies() {
 							<div className="flex-nowrap  " >
 								{movie.reviews && movie.reviews.length > 0 ? (
 									movie.reviews.map(review => (
+
 										<div key={review.id} className="card-review p-3 mb-3">
 
-											<h5>Recensione di: {review.name}</h5>
-											<div className="mb-2">
-												<strong>Voto:</strong> {review.vote}/5 ⭐
+											<div className="card-body">
+												<h5>Recensione di: {review.name}</h5>
+												<div className="mb-2">
+													<strong>Voto:</strong> {review.vote}/5 ⭐
+												</div>
+												<p>{review.text}</p>
 											</div>
-											<p>{review.text}</p>
+
+											{review.nickname && (
+												<div className="card-footer ">
+													<span>Author: {review.nickname}</span>
+												</div>
+
+											)}
 										</div>
 									))
 								) : (

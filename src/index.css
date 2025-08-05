@@ -36,3 +36,6 @@ body {
 .container-SingleMovie {
   max-width: 700px;
 }
+.card-footer {
+  border-top: 1px solid grey;
+}
