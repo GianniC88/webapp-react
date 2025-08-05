@@ -24,6 +24,7 @@ export default function SingleMovies() {
 	return (
 		<>
 
+			<Jumbotron title={movie.title} text={movie?.plot} cta={`Guarda ${movie?.title}`} />
 
 			<section>
 				<div className="container p-5">
@@ -72,6 +73,12 @@ export default function SingleMovies() {
 									<label for="content" className="form-label">content</label>
 									<textarea className="form-control" name="content" id="content" rows="4"></textarea>
 								</div>
+								<button
+									type="submit"
+									class="btn btn-primary"
+								>
+									<i className="bi bi-floppy">Save</i>
+								</button>
 
 							</form>
 						</div>
@@ -108,7 +115,6 @@ export default function SingleMovies() {
 					</div>
 				</div>
 			</section>
-			<Jumbotron title={movie.title} text={movie?.plot} cta={`Guarda ${movie?.title}`} />
 
 
 
