@@ -27,61 +27,64 @@ export default function SingleMovies() {
 
 			<section>
 				<div className="container p-5">
-					<h1 className="display-5 fw-bolder">Recensioni</h1>
-					<form action="add_review ">
-						<div class="d-flex">
-							<div class="col-6 ">
-								<div class="mb-3 ">
-									<label htmlFor="name" class="form-label">Name</label>
+					<h1 className="display-5 fw-bolder mb-5">Review</h1>
+					<h4 className="text-muted">add review</h4>
+					<div className="row ">
+						<div className="col-3 ">
+							<form action="card p-4">
+								<div className="mb-3 ">
+									<label htmlFor="name" className="form-label">Name</label>
 									<input
 										className="form-control"
 										type="text"
 										name="name"
 										id="name"
-										class="form-control"
 										placeholder="Type Your Name"
 										aria-describedby="helpId" />
 									<small id="helpId" class="text-muted">Help text</small>
 								</div>
-								<div class="mb-3">
-									<label htmlFor="name" class="form-label">Name</label>
+								<div className="mb-3">
+									<label htmlFor="name" className="form-label">Name</label>
 									<input
 										className="form-control"
 										type="text"
 										name="name"
 										id="name"
-										class="form-control"
 										placeholder="Type Your Name"
 										aria-describedby="helpId" />
-									<small id="helpId" class="text-muted">Help text</small>
+									<small id="helpId" className="text-muted">Help text</small>
 								</div>
-								<div class="mb-3">
-									<label htmlFor="summary" class="form-label">Name</label>
+								<div className="mb-3">
+									<label htmlFor="summary" className="form-label">Name</label>
 									<input
 										className="form-control"
 										type="text"
 										name="summary"
 										id="summary"
-										class="form-control"
+
 										placeholder="Type Your review summary"
 										aria-describedby="helpId" />
-									<small id="helpId" class="text-muted">Help text</small>
+									<small id="helpId" className="text-muted">Help text</small>
 								</div>
-							</div>
 
+
+								<div className="mb-3">
+									<label for="content" className="form-label">content</label>
+									<textarea className="form-control" name="content" id="content" rows="4"></textarea>
+								</div>
+
+							</form>
 						</div>
-						<div class="mb-3 col-6">
-							<label for="content" class="form-label">content</label>
-							<textarea class="form-control" name="content" id="content" rows="4"></textarea>
+						<div className="col-6 d-flex align-items-center justify-content-center">
+							<img className="cardtop-img img-fluid" src={`${import.meta.env.VITE_BACKEND_URL}/images/${movie.image}`} alt={movie.title} />
 						</div>
 
-					</form>
+					</div>
 
 					<div className="containerSingleMovie">
-						<div className="d-flex justify-content-center align-items-center min-vh-100">
+						<div className="d-flex justify-content-center align-items-center ">
 
 							<div className="flex-nowrap  " >
-								<img className="cardtop-img " src={`${import.meta.env.VITE_BACKEND_URL}/images/${movie.image}`} alt={movie.title} />
 								{movie.reviews && movie.reviews.length > 0 ? (
 									movie.reviews.map(review => (
 										<div key={review.id} className="card-review p-3 mb-3">
