@@ -1,0 +1,38 @@
+@import "bootstrap";
+@import "bootstrap-icons";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.HomePage {
+  background-color: blueviolet;
+}
+
+header {
+  background-color: rgb(187, 156, 118);
+}
+
+body {
+  background-color: rgba(47, 46, 46, 0.9);
+}
+
+.card-review {
+  max-width: 418px;
+  background-color: bisque;
+  border-radius: 4px;
+}
+
+.cardtop-img {
+  max-height: 640px;
+  max-width: 640px;
+}
+
+.container-SingleMovie {
+  max-width: 700px;
+}
