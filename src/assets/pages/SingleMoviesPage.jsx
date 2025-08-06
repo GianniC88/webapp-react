@@ -7,7 +7,11 @@ export default function SingleMovies() {
 
 
 	const { id } = useParams()
-	const api_server_url = `${import.meta.env.VITE_BACKEND_URL}/api/movies/${id}/reviews`; const [movie, setMovie] = useState({})
+	const api_server_url = `${import.meta.env.VITE_BACKEND_URL}/api/movies/${id}`;
+
+	const [movie, setMovie] = useState({})
+	const [reviews, setReveiews] = useState([])
+
 	const [formData, setFormData] = useState({
 		nickname: "",
 		name: "",
@@ -31,14 +35,43 @@ export default function SingleMovies() {
 					}
 				}
 				setMovie(data)
+				setReveiews(data.reviews)
 			})
 
 	}, [id])
 
 	function handleFunction(e) {
 		e.preventDefault()
+		console.log(formData)
+		console.log(reviews)
 
 
+		// Salva la recensione
+		fetch(`${api_server_url}/review`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(formData)
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (data.error) {
+					alert("Errore: " + data.message);
+				} else {
+					alert("Recensione salvata con successo!");
+					setFormData({
+						nickname: "",
+						name: "",
+						vote: 1,
+						content: ""
+					});
+					setReveiews([...reviews, data.review]);
+				}
+			})
+			.catch(err => {
+				console.error("Errore nel salvataggio:", err);
+			});
 
 	}
 
@@ -59,10 +92,7 @@ export default function SingleMovies() {
 
 
 							<form
-								onSubmit={(e) => {
-									e.preventDefault();
-									console.log(formData);
-								}}
+								onSubmit={(e) => handleFunction(e)}
 							>
 
 
@@ -158,8 +188,8 @@ export default function SingleMovies() {
 						<div className="d-flex justify-content-center align-items-center ">
 
 							<div className="flex-nowrap  " >
-								{movie.reviews && movie.reviews.length > 0 ? (
-									movie.reviews.map(review => (
+								{reviews && reviews.length > 0 ? (
+									reviews.map(review => (
 
 										<div key={review.id} className="card-review p-3 mb-3">
 
