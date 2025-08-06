@@ -7,8 +7,7 @@ export default function SingleMovies() {
 
 
 	const { id } = useParams()
-	const api_server_url = `${import.meta.env.VITE_BACKEND_API_SERVER}/${id}`
-	const [movie, setMovie] = useState({})
+	const api_server_url = `${import.meta.env.VITE_BACKEND_URL}/api/movies/${id}/reviews`; const [movie, setMovie] = useState({})
 	const [formData, setFormData] = useState({
 		nickname: "",
 		name: "",
@@ -23,6 +22,7 @@ export default function SingleMovies() {
 		fetch(api_server_url)
 			.then(res => res.json())
 			.then(data => {
+				console.log('Dati ricevuti:', data);
 				const MoviesArray = data.data
 				console.log(data)
 				if (data.error) {
@@ -34,6 +34,15 @@ export default function SingleMovies() {
 			})
 
 	}, [id])
+
+	function handleFunction(e) {
+		e.preventDefault()
+
+
+
+	}
+
+
 	return (
 		<>
 
@@ -44,8 +53,20 @@ export default function SingleMovies() {
 					<h1 className="display-5 fw-bolder mb-5">Review</h1>
 					<h4 className="text-muted">add review</h4>
 					<div className="row ">
+
+
 						<div className="col-3 ">
-							<form action="card p-4">
+
+
+							<form
+								onSubmit={(e) => {
+									e.preventDefault();
+									console.log(formData);
+								}}
+							>
+
+
+
 								<div className="mb-3 ">
 
 									<label htmlFor="nickname" className="form-label">nickname</label>
@@ -123,6 +144,9 @@ export default function SingleMovies() {
 								</button>
 
 							</form>
+
+
+
 						</div>
 						<div className="col-6 d-flex align-items-center justify-content-center">
 							<img className="cardtop-img img-fluid" src={`${import.meta.env.VITE_BACKEND_URL}/images/${movie.image}`} alt={movie.title} />
