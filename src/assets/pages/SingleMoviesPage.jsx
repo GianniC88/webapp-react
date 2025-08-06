@@ -1,6 +1,7 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Jumbotron from "../components/Jumbotron"
+import NotFound from "../components/NotFound"
 
 export default function SingleMovies() {
 
@@ -8,6 +9,7 @@ export default function SingleMovies() {
 	const { id } = useParams()
 	const api_server_url = `${import.meta.env.VITE_BACKEND_API_SERVER}/${id}`
 	const [movie, setMovie] = useState({})
+	const navigate = useNavigate
 	console.log(id)
 
 	useEffect(() => {
@@ -17,6 +19,11 @@ export default function SingleMovies() {
 			.then(data => {
 				const MoviesArray = data.data
 				console.log(data)
+				if (data.error) {
+					if (data.messagge === 'Not Found') {
+						return navigate(<NotFound />)
+					}
+				}
 				setMovie(data)
 			})
 
