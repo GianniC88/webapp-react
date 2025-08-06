@@ -2,13 +2,14 @@ import { useParams, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Jumbotron from "../components/Jumbotron"
 import NotFound from "../components/NotFound"
+import Loader from "../components/loader"
 
 export default function SingleMovies() {
 
 
 	const { id } = useParams()
 	const api_server_url = `${import.meta.env.VITE_BACKEND_URL}/api/movies/${id}`;
-
+	const [loading, setLoading] = useState(true)
 	const [movie, setMovie] = useState({})
 	const [reviews, setReveiews] = useState([])
 
@@ -37,8 +38,12 @@ export default function SingleMovies() {
 				setMovie(data)
 				setReveiews(data.reviews)
 			})
+			.finally(() => setLoading(false));
+	}, [id]);
 
-	}, [id])
+	if (loading) {
+		return <Loader />;
+	}
 
 	function handleFunction(e) {
 		e.preventDefault()
