@@ -9,6 +9,12 @@ export default function SingleMovies() {
 	const { id } = useParams()
 	const api_server_url = `${import.meta.env.VITE_BACKEND_API_SERVER}/${id}`
 	const [movie, setMovie] = useState({})
+	const [formData, setFormData] = useState({
+		nickname: "",
+		name: "",
+		vote: 1,
+		content: ""
+	})
 	const navigate = useNavigate
 	console.log(id)
 
@@ -41,6 +47,7 @@ export default function SingleMovies() {
 						<div className="col-3 ">
 							<form action="card p-4">
 								<div className="mb-3 ">
+
 									<label htmlFor="nickname" className="form-label">nickname</label>
 									<input
 										className="form-control"
@@ -48,11 +55,15 @@ export default function SingleMovies() {
 										name="nickname"
 										id="nickname"
 										placeholder="Type Your nickname for your review"
-										aria-describedby="helpId" />
+										aria-describedby="helpId"
+										value={formData.nickname}
+										onChange={(e) => setFormData({ ...formData, nickname: e.target.value })}
+									/>
 									<small id="helpId" className="text-muted">Help text</small>
 								</div>
 
 								<div className="mb-3">
+
 									<label htmlFor="name" className="form-label">Name</label>
 									<input
 										className="form-control"
@@ -60,14 +71,48 @@ export default function SingleMovies() {
 										name="name"
 										id="name"
 										placeholder="Type Your Name"
-										aria-describedby="helpId" />
+										aria-describedby="helpId"
+										value={formData.name}
+										onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+									/>
+
+									<small id="helpId" className="text-muted">Help text</small>
+								</div>
+
+								<div className="mb-3">
+
+									<label htmlFor="vote" className="form-label">Vote</label>
+									<input
+										className="form-control"
+										type="number"
+										step="1"
+										min="1"
+										max="5"
+										name="vote"
+										id="vote"
+										placeholder="Type Your Vote"
+										aria-describedby="helpId"
+										value={formData.vote}
+										onChange={(e) => setFormData
+											({ ...formData, vote: e.target.value })
+										}
+									/>
 									<small id="helpId" className="text-muted">Help text</small>
 								</div>
 
 
 								<div className="mb-3">
+
+
 									<label htmlFor="content" className="form-label">content</label>
-									<textarea className="form-control" name="content" id="content" rows="4"></textarea>
+									<textarea
+										className="form-control"
+										name="content"
+										id="content"
+										rows="4"
+										value={formData.content}
+										onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+									></textarea>
 								</div>
 
 								<button
